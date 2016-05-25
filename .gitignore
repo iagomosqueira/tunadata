@@ -1,0 +1,11 @@
+data/raw/iotc/*.csv
+data/raw/iotc/*.xlsx
+data/raw/iotc/*.zip
+data/raw/iotc/doc/
+data/raw/iattc/*.csv
+data/raw/iattc/*.zip
+data/raw/iccat/*.csv
+data/raw/iccat/*.rar
+data/raw/iccat/*.xlsx
+data/raw/wcpfc/*.DBF
+data/raw/wcpfc/*.zip
