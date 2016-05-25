@@ -1,0 +1,49 @@
+# data.R - DESC
+# tunadata/R/data.R
+
+# Copyright European Union, 2016
+# Author: Iago Mosqueira (EC JRC) <iago.mosqueira@jrc.ec.europa.eu>
+#
+# Distributed under the terms of the European Union Public Licence (EUPL) V.1.1.
+
+#' IOTC catch and effort datasets
+#'
+#' Public datasets from the Indian Ocean Tuna Commission (IOTC), available as
+#' objects of class \code{\link[data.table]{data.table}}.
+#'
+#' The tables below describe the columns on each table, including the name of
+#' the column in the original table.
+#'
+#' @section ionc - Nominal catch:
+#' \describe{
+#'   \item{flcde}{Three letter flag code, \emph{FlCde}.}
+#'   \item{fleet}{Long name of fleet (flag state), \emph{Fleet}.}
+#'   \item{arcde}{Area code, \emph{ArCde}.}
+#'   \item{area}{Long name of area, \emph{AreaIOTC}.}
+#'   \item{year}{Year, \emph{Year/An}.}
+#'   \item{ficde}{Fishery code, either ART or IND, \emph{TFCde}.}
+#'   \item{fishery}{Long name of fishery, \emph{TypeFishery}.}
+#'   \item{grgrp}{Gear group, \emph{GrGroup}.}
+#'   \item{grcde}{Gear code, \emph{GrCde}.}
+#'   \item{gear}{Long name of gear, \emph{Gear}.}
+#'   \item{spp}{FAO 3A species code, \emph{SpCde}.}
+#'   \item{species}{English name of the species, \emph{Species}.}
+#'   \item{spname}{Latin name of the species, \emph{SpLat}.}
+#'   \item{catch}{Total reported catch, \emph{Catch/Capture(t)}.}
+#'   \item{cpcde}{Unifies certain fleet(s) into the corresponding IOTC CPC, i.e. EU.}
+#'   \item{cpc}{Long name for cpcde}
+#' }
+#'
+#' CELL - catch and effort for longline fleets
+#'
+#' CESURF - catch and effort for surface fisheries
+#'
+#' CECOAST - catch and effort for coastal fisheries
+#' 
+#' @docType data
+#' @keywords datasets
+#' @format An series of objects of class data.table
+#' @name iotc
+#' @rdname iotc
+NULL
+

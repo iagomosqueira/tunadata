@@ -4,8 +4,11 @@ data/raw/iotc/*.zip
 data/raw/iotc/doc/
 data/raw/iattc/*.csv
 data/raw/iattc/*.zip
+data/raw/iattc/doc/
 data/raw/iccat/*.csv
 data/raw/iccat/*.rar
 data/raw/iccat/*.xlsx
+data/raw/iccat/doc/
 data/raw/wcpfc/*.DBF
 data/raw/wcpfc/*.zip
+data/raw/wcpfc/doc/

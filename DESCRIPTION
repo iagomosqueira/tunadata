@@ -1,0 +1,18 @@
+Package: tunadata
+Title: Aggregated Public Datasets from the Tuna RFMOs
+Version: 0.0.2
+Date: 2016-05-25
+Authors@R: person("Iago", "Mosqueira", email = "iago.mosqueira@jrc.ec.europa.eu",
+  role = c("aut", "cre"))
+Description: Public data from the various tuna Regional Fisheries Management
+    Organizations, made available as R data.frame - data.table objects. Formats
+    are unified so comparisons across tRFMOs are made simpler.
+Depends:
+    R(>= 3.2.0),
+    data.table,
+    ggplot2
+License: file LICENSE
+LazyLoad: Yes
+LazyData: Yes
+BugReports: https://github.com/iagomosqueira/tunadata
+RoxygenNote: 5.0.1
