@@ -26,10 +26,11 @@ test_script:
 
 on_failure:
   - travis-tool.sh dump_logs
+  - 7z a failure.zip *.Rcheck\*
   - appveyor PushArtifact Logs.zip
 
 on_success:
-  - appveyor PushArtifact Bits.zip
+  - appveyor PushArtifact '\*_*.tar.gz'.zip
 
 artifacts:
   - path: '*.Rcheck\**\*.log'
