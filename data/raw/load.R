@@ -105,8 +105,28 @@ cell <- cbind(cen, cet[,list(catch)])
 ce <- fread("iotc/IOTC-2016-WPNT06-DATA06-CECoastal.csv", sep=",", header=TRUE)
 
 
-# AV
-av <- fread("iotc/results_57443fe243a08.csv", sep=",", header=TRUE)
+# FC
+
+nmsfc <- c("flcde", "fleet", "year", "ficde", "fishery",
+  "grgrp", "grcde", "gear", "loa", "boats") 
+
+iofc <- fread("iotc/results_57862ff1616c1.csv", sep=",", header=TRUE)
+
+# SELECT cols
+cols <- c("FlCde", "Fleet", "Year_An", "TFCde", "TypeFishery", "GrGroup",
+  "GrCde", "Gear", "LOA_LHT", "noBoats_nBateaux")
+
+iofc <- iofc[, cols, with=FALSE]
+names(iofc) <- nmsfc
+
+# cpc
+iofc[, cpcde := ifelse(grepl("EU.*", iofc$fleet), "EU", iofc$flcde)]
+iofc[, cpc := ifelse(grepl("EU.*", iofc$fleet), "European Union", iofc$fleet)]
+
+setkey(iofc, "cpcde", "flcde", "ficde", "grgrp", "grcde", "year")
+
+# SAVE iotc
+save(ionc, iofc, file="../iotc.RData") 
 
 # }}}
 

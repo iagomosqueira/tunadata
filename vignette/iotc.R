@@ -10,9 +10,9 @@
 
 library(data.table)
 library(ggplot2)
+library(tunadata)
 
 data(iotc)
-# load("../data/iotc.RData")
 
 theme_set(theme_bw())
 
@@ -58,6 +58,3 @@ dat[, cpcde := factor(dat$cpcde, levels=rev(unique(dat$cpcde)))]
 ggplot(dat, aes(y=cpcde, x=catch)) + geom_point(size=3) +
   geom_segment(aes(x=0, xend=catch, y=cpcde, yend=cpcde)) +
   ylab("") + xlab("Catch (000s t)") + facet_wrap(~decade) 
-
-
-# CATCH per gear over time

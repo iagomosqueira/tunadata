@@ -1,7 +1,7 @@
 Package: tunadata
 Title: Aggregated Public Datasets from the Tuna RFMOs
-Version: 0.0.2
-Date: 2016-05-25
+Version: 0.0.3
+Date: 2016-07-13
 Authors@R: person("Iago", "Mosqueira", email = "iago.mosqueira@jrc.ec.europa.eu",
   role = c("aut", "cre"))
 Description: Public data from the various tuna Regional Fisheries Management
