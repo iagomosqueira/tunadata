@@ -30,7 +30,8 @@ on_failure:
   - appveyor PushArtifact Logs.zip
 
 on_success:
-  - appveyor PushArtifact '\*_*.tar.gz'.zip
+  - 7z a Logs.zip *_*.zip
+  - appveyor PushArtifact Bits.zip
 
 artifacts:
   - path: '*.Rcheck\**\*.log'
