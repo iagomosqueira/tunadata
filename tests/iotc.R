@@ -28,7 +28,7 @@ dat <- ionc[, .(catch=sum(catch)), by = list(grgrp, year)]
 dat[, grgrp := factor(dat$grgrp, levels=unique(dat$grgrp))]
 
 ggplot(dat, aes(x=year, y=catch, group=grgrp)) + geom_line(aes(colour=grgrp)) +
-  theme(legend.position='bottom', legend.title=element_text("Gear")) +
+  theme(legend.position='bottom') +
   labs(colour="Gear Group") + xlab("") + ylab("Catch per gear (t)") +
   geom_text(data=subset(dat, year==2014), aes(x=2020, y=catch, label=grgrp)) +
   xlim(c(NA, 2023))
