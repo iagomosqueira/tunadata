@@ -1,6 +1,6 @@
 # tunadata
-- Version: 0.0.1
-- Date: 2016-05-23
+- Version: 0.0.3
+- Date: 2016-07-07
 - Author: Iago Mosqueira <iago.mosqueira AT jrc.ec.europa.eu>
 - Maintainer: Iago Mosqueira <iago.mosqueira AT jrc.ec.europa.eu>
 - Repository: <https://github.com/iagomosqueira/tunadata/>
