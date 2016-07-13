@@ -14,8 +14,7 @@ To install this package from source, start R and enter:
   library(devtools)
   install_github("iagomosqueira/tunadata")
 
-<!--
-or download from the [tunadata releases page](https://github.com/iagomosqueira/tunadata/releases/latest) -->
+or download from the [tunadata releases page](https://github.com/iagomosqueira/tunadata/releases/latest)
 
 ## Documentation
 - [Help pages](http://iagomosqueira.github.io/tunadata)
