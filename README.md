@@ -19,10 +19,6 @@ or download from the [tunadata releases page](https://github.com/iagomosqueira/t
 
 ## Documentation
 - [Help pages](http://iagomosqueira.github.io/tunadata)
-- Vignette
-
-  library(tunadata)
-  vignette(tunadata)
 
 ## Build Status
 [![Travis Build Status](https://travis-ci.org/iagomosqueira/tunadata.svg?branch=master)](https://travis-ci.org/iagomosqueira/tunadata)
