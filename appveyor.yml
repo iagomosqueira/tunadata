@@ -20,6 +20,7 @@ environment:
 
 build_script:
   - travis-tool.sh install_deps
+  - Rscript -e 'options(repos=c(CRAN="http://cran.rstudio.com")); install.packages("chron")'
 
 test_script:
   - travis-tool.sh run_tests
