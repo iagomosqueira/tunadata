@@ -2,9 +2,11 @@
 % Please edit documentation in R/data.R
 \docType{data}
 \name{iotc}
+\alias{iofc}
+\alias{ionc}
 \alias{iotc}
 \title{IOTC catch and effort datasets}
-\format{An object of class data.table with}
+\format{A series of objects of class data.table}
 \description{
 Public datasets from the Indian Ocean Tuna Commission (IOTC), available as
 objects of class \code{\link[data.table]{data.table}}.
@@ -13,7 +15,7 @@ objects of class \code{\link[data.table]{data.table}}.
 The tables below describe the columns on each table, including the name of
 the column in the original table.
 }
-\section{ionc - Nominal catch}{
+\section{ionc - Nominal catch (NC)}{
 
 \describe{
   \item{flcde}{Three letter flag code, \emph{FlCde}.}
@@ -29,6 +31,25 @@ the column in the original table.
   \item{spp}{FAO 3A species code, \emph{SpCde}.}
   \item{species}{English name of the species, \emph{Species}.}
   \item{spname}{Latin name of the species, \emph{SpLat}.}
+  \item{catch}{Total reported catch, \emph{Catch/Capture(t)}.}
+  \item{cpcde}{Unifies certain fleet(s) into the corresponding IOTC CPC, i.e. EU.}
+  \item{cpc}{Long name for cpcde}
+}
+}
+
+\section{iofc -  Fishing craft statistics (FC)}{
+
+\describe{
+  \item{flcde}{Three letter flag code, \emph{FlCde}.}
+  \item{fleet}{Long name of fleet (flag state), \emph{Fleet}.}
+  \item{year}{Year, \emph{Year/An}.}
+  \item{ficde}{Fishery code, either ART or IND, \emph{TFCde}.}
+  \item{fishery}{Long name of fishery, \emph{TypeFishery}.}
+  \item{grgrp}{Gear group, \emph{GrGroup}.}
+  \item{grcde}{Gear code, \emph{GrCde}.}
+  \item{gear}{Long name of gear, \emph{Gear}.}
+  \item{loa}{Vessel length overall, \emph{LOA_LHT}.}
+  \item{boats}{Number of boats, \emph{noBoats_nBateaux}.}
   \item{catch}{Total reported catch, \emph{Catch/Capture(t)}.}
   \item{cpcde}{Unifies certain fleet(s) into the corresponding IOTC CPC, i.e. EU.}
   \item{cpc}{Long name for cpcde}

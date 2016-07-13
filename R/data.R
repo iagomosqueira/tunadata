@@ -14,7 +14,7 @@
 #' The tables below describe the columns on each table, including the name of
 #' the column in the original table.
 #'
-#' @section ionc - Nominal catch:
+#' @section ionc - Nominal catch (NC):
 #' \describe{
 #'   \item{flcde}{Three letter flag code, \emph{FlCde}.}
 #'   \item{fleet}{Long name of fleet (flag state), \emph{Fleet}.}
@@ -33,17 +33,34 @@
 #'   \item{cpcde}{Unifies certain fleet(s) into the corresponding IOTC CPC, i.e. EU.}
 #'   \item{cpc}{Long name for cpcde}
 #' }
+#' @section iofc -  Fishing craft statistics (FC):
+#' \describe{
+#'   \item{flcde}{Three letter flag code, \emph{FlCde}.}
+#'   \item{fleet}{Long name of fleet (flag state), \emph{Fleet}.}
+#'   \item{year}{Year, \emph{Year/An}.}
+#'   \item{ficde}{Fishery code, either ART or IND, \emph{TFCde}.}
+#'   \item{fishery}{Long name of fishery, \emph{TypeFishery}.}
+#'   \item{grgrp}{Gear group, \emph{GrGroup}.}
+#'   \item{grcde}{Gear code, \emph{GrCde}.}
+#'   \item{gear}{Long name of gear, \emph{Gear}.}
+#'   \item{loa}{Vessel length overall, \emph{LOA_LHT}.}
+#'   \item{boats}{Number of boats, \emph{noBoats_nBateaux}.}
+#'   \item{catch}{Total reported catch, \emph{Catch/Capture(t)}.}
+#'   \item{cpcde}{Unifies certain fleet(s) into the corresponding IOTC CPC, i.e. EU.}
+#'   \item{cpc}{Long name for cpcde}
+#' }
+
 #'
 #' CELL - catch and effort for longline fleets
 #'
 #' CESURF - catch and effort for surface fisheries
 #'
 #' CECOAST - catch and effort for coastal fisheries
-#' 
+#'
+#' @aliases iotc ionc iofc
 #' @docType data
 #' @keywords datasets
-#' @format An series of objects of class data.table
+#' @format A series of objects of class data.table
 #' @name iotc
 #' @rdname iotc
 NULL
-

@@ -1,2 +1,4 @@
 data/load.R
 ^data/raw$
+appveyor.yml
+.travis.yml

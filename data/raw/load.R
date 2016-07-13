@@ -32,7 +32,7 @@ ionc[, cpc := ifelse(grepl("EU.*", ionc$fleet), "European Union", ionc$fleet)]
 setkey(ionc, "cpcde", "flcde", "arcde", "ficde", "grgrp", "grcde", "year", "spp", "spgrp")
 
 # SAVE iotc
-save(ionc, file="../iotc.RData") 
+save(ionc, file="../iotc.RData", compress="xz") 
 
 
 # CE LL
@@ -66,7 +66,7 @@ cell[, flcde := gsub(" ", "", flcde)]
 cell[, cpcde := ifelse(grepl("EU*", flcde), "EU", flcde)]
 
 # SAVE iotc
-save(ionc, cell, file="../iotc.RData", compress="xz") 
+# save(ionc, cell, file="../iotc.RData", compress="xz") 
 
 
 # -- EXAMPLE 1 - Efforty by year for LL (HOOKS)
@@ -126,7 +126,7 @@ iofc[, cpc := ifelse(grepl("EU.*", iofc$fleet), "European Union", iofc$fleet)]
 setkey(iofc, "cpcde", "flcde", "ficde", "grgrp", "grcde", "year")
 
 # SAVE iotc
-save(ionc, iofc, file="../iotc.RData") 
+save(ionc, iofc, file="../iotc.RData", compress="xz") 
 
 # }}}
 
