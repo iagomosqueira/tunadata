@@ -8,15 +8,21 @@
 
 ## Overview
 
-To install this package, start R and enter:
+To install this package from source, start R and enter:
 
-	install.packages("tunadata", repos="http://iagomosqueira.github.io/R")
+  install.packages("devtools")
+  library(devtools)
+  install_github("iagomosqueira/tunadata")
 
-or download from the [tunadata releases page](https://github.com/iagomosqueira/tunadata/releases/latest)
+<!--
+or download from the [tunadata releases page](https://github.com/iagomosqueira/tunadata/releases/latest) -->
 
 ## Documentation
 - [Help pages](http://iagomosqueira.github.io/tunadata)
 - Vignette
+
+  library(tunadata)
+  vignette(tunadata)
 
 ## Build Status
 [![Travis Build Status](https://travis-ci.org/iagomosqueira/tunadata.svg?branch=master)](https://travis-ci.org/iagomosqueira/tunadata)
