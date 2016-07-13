@@ -26,7 +26,7 @@ test_script:
 
 on_failure:
   - travis-tool.sh dump_logs
-  - 7z a failure.zip *.Rcheck\*
+  - 7z a Logs.zip *.Rcheck\*
   - appveyor PushArtifact Logs.zip
 
 on_success:
