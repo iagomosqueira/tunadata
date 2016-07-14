@@ -20,6 +20,11 @@ environment:
 
 build_script:
   - travis-tool.sh install_deps
+  - travis-tool.sh install_r chron
+  - travis-tool.sh install_r gtable
+  - travis-tool.sh install_r scales
+  - travis-tool.sh install_r plyr
+  - travis-tool.sh install_r reshape2
 
 test_script:
   - travis-tool.sh run_tests
