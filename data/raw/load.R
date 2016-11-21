@@ -14,7 +14,7 @@ nmsnc <- c("flcde", "fleet", "arcde", "area", "year", "ficde", "fishery",
   "grgrp", "grcde", "gear", "spp", "species", "spname", "spgrp", "catch") 
 
 # NC
-ionc <- fread("iotc/IOTC-2015-DATASETS-NCDB_230216-Catches.csv",
+ionc <- fread("iotc/IOTC-2016-DATASETS-NCDB_240816.csv",
   sep=",", header=TRUE)
 
 # SELECT cols
@@ -110,7 +110,7 @@ ce <- fread("iotc/IOTC-2016-WPNT06-DATA06-CECoastal.csv", sep=",", header=TRUE)
 nmsfc <- c("flcde", "fleet", "year", "ficde", "fishery",
   "grgrp", "grcde", "gear", "loa", "boats") 
 
-iofc <- fread("iotc/results_57862ff1616c1.csv", sep=",", header=TRUE)
+iofc <- fread("iotc/iofc_results_5832c68550a44.csv", sep=",", header=TRUE)
 
 # SELECT cols
 cols <- c("FlCde", "Fleet", "Year_An", "TFCde", "TypeFishery", "GrGroup",
