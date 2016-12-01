@@ -1,2 +1,4 @@
 import("data.table")
 import("ggplot2")
+export("getNC",
+  "getCodeList")

@@ -1,5 +1,5 @@
 # iotc.R - DESC
-# /iotc.R
+# tunadata/data/raw/iotc.R
 
 # Copyright European Union, 2016
 # Author: Iago Mosqueira (EC JRC) <iago.mosqueira@jrc.ec.europa.eu>
@@ -10,60 +10,62 @@ library(tunadata)
 
 # NC {{{
 
-key <- "819e0e9042283d364effd3190767bdc5"
+IOTC_KEY=Sys.getenv("IOTC_KEY")
 
 # LOAD ionc
-ionc <- getNC(key)
+ionc <- getNC(IOTC_KEY)
 
 # fleet
-fleet <- getCodeList('Fleet', key)
+fleet <- getCodeList('Fleet', key=IOTC_KEY)
 ionc <- fleet[ionc, on="fleetCode"]
 
 # species
-species <- getCodeList('Species', key)
+species <- getCodeList('Species', key=IOTC_KEY)
 ionc <- species[ionc, on="speciesCode"]
 
 # speciesGroup
-speciesGroup <- getCodeList('SpeciesGroup', key)
+speciesGroup <- getCodeList('SpeciesGroup', key=IOTC_KEY)
 ionc <- speciesGroup[ionc, on="speciesGroupCode"]
 
 # fisheryType
-fisheryType <- getCodeList('FisheryType', key)
+fisheryType <- getCodeList('FisheryType', key=IOTC_KEY)
 ionc <- fisheryType[ionc, on="fisheryTypeCode"]
 
 # fisheryGroup
-fisheryGroup <- getCodeList('FisheryGroup', key)
+fisheryGroup <- getCodeList('FisheryGroup', key=IOTC_KEY)
 ionc <- fisheryGroup[ionc, on="fisheryGroupCode"]
 
 # fishery
-fishery <- getCodeList('Fishery', key)
+fishery <- getCodeList('Fishery', key=IOTC_KEY)
 ionc <- fishery[ionc, on="fisheryCode"]
 
 # quality
-quality <- getCodeList('QualityCode', key, name="quality")
+quality <- getCodeList('QualityCode', key=IOTC_KEY, name="quality")
 ionc <- quality[ionc, on="qualityCode"]
 
 # cpc
+cpc <- getCPCCodeList(key=IOTC_KEY, name="fleet")
+ionc <- cpc[ionc, on="fleetCode"]
 
 # area
-ionc <- merge(ionc, data.table(areaCode=c("IRWESIO", "IREASIO"),
-    area=c("Western Indian Ocean", "Eastern Indian Ocean")),
-    by.x="areaCode", by.y="areaCode")
+area <- data.table(areaCode=c("IRWESIO", "IREASIO"),
+  area=c("Western Indian Ocean", "Eastern Indian Ocean"))
+ionc <- area[ionc, on="areaCode"]
 
 # REORDER columns
 setcolorder(ionc, c("year", "speciesGroupCode", "speciesGroup",
   "speciesCode", "species", "areaCode", "area", "fleetCode", "fleet",
-  "fisheryGroupCode", "fisheryGroup", "fisheryTypeCode", "fisheryType",
-  "fisheryCode", "fishery", "qualityCode", "quality", "catches"))
+  "cpc", "cpcCode", "fisheryGroupCode", "fisheryGroup", "fisheryTypeCode",
+  "fisheryType", "fisheryCode", "fishery", "qualityCode", "quality", "catches"))
 
 # RENAME columns
 setnames(ionc, c("year", "spgcde", "spg",
-  "sppcde", "spp", "areacde", "area", "fleetcde", "fleet",
+  "sppcde", "spp", "areacde", "area", "fleetcde", "fleet", "cpc", "cpccde",
   "fishgrcde", "fishgr", "fishtycde", "fishty",
   "fishcde", "fishery", "qualcde", "quality", "catches"))
 
 # SETKEY
-setkey(ionc, spgcde, sppcde, areacde, fleetcde, fishgrcde,
+setkey(ionc, spgcde, sppcde, areacde, fleetcde, cpccde, fishgrcde,
   fishtycde, fishcde, qualcde)
 
 # SAVE iotc

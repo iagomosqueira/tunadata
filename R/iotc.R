@@ -1,5 +1,5 @@
 # iotc.R - DESC
-# /iotc.R
+# tunadata/R/iotc.R
 
 # Copyright European Union, 2016
 # Author: Iago Mosqueira (EC JRC) <iago.mosqueira@jrc.ec.europa.eu>
@@ -77,7 +77,8 @@ getCodeList <- function(list, key,
 } # }}}
 
 # getCPCCodeList {{{
-getCPCCodeList <- function(key) {
+getCPCCodeList <- function(key,
+  name=paste0(tolower(substring(list, 1, 1)), substring(list, 2))) {
   
   list <- "Fleet"
 
@@ -92,11 +93,13 @@ getCPCCodeList <- function(key) {
     stop(paste(http_status(req)$message, url, sep = " - "))
  
   # deJSON table
-  res <- fromJSON(content(req, "text", encoding="UTF-8"))
+  res <- fromJSON(content(req, "text", encoding="UTF-8"), flatten=TRUE)
+  res <- data.table(res[["data"]][,c("code", "fleetOfficial.code", "fleetOfficial.nameEn")])
 
-  res <- data.table(res[["data"]][["fleetOfficial"]][,c("code", "nameEn", "nameFr")])
+  # RENAME to match list
+  names(res) <- c(paste0(name, "Code"), "cpcCode", "cpc")
 
-  setkey(res, code)
+  setkeyv(res, paste0(name, "Code"))
 
   return(res)
 } # }}}
