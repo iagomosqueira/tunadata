@@ -8,7 +8,7 @@
 
 # getNC {{{
 
-getNC <- function(key) {
+getNC <- function(key, toYear=as.character(as.numeric(format(Sys.time(), "%Y")) - 1)) {
 
   url <- "http://statistics.iotc.org/rest/services/data/nc/summary/results"
 
@@ -16,9 +16,8 @@ getNC <- function(key) {
     '{',
       '"includePreliminary": false, ',
       '"includeConfidential": false, ',
-      '"iotcSpecies": false, ',
       '"fromYear": 1950, ',
-      '"toYear": 2015, ',
+      paste0('"toYear": ', as.character(toYear), ', '),
       '"groupByYear": true, ',
       '"groupByFleet": true, ',
       '"groupByFisheryType": true, ',

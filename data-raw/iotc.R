@@ -2,7 +2,7 @@
 # tunadata/data/raw/iotc.R
 
 # Copyright European Union, 2016
-# Author: Iago Mosqueira (EC JRC) <iago.mosqueira@jrc.ec.europa.eu>
+# Author: Iago Mosqueira (EC JRC) <iago.mosqueira@ec.europa.eu>
 #
 # Distributed under the terms of the European Union Public Licence (EUPL) V.1.1.
 
@@ -16,31 +16,33 @@ IOTC_KEY=Sys.getenv("IOTC_KEY")
 ionc <- getNC(IOTC_KEY)
 
 # fleet
-fleet <- getCodeList('Fleet', key=IOTC_KEY)
+# GET values in field
+fleet <- getCodeList("Fleet", key=IOTC_KEY)
+# SUBSET values to those in DB
 ionc <- fleet[ionc, on="fleetCode"]
 
 # species
-species <- getCodeList('Species', key=IOTC_KEY)
+species <- getCodeList("Species", key=IOTC_KEY)
 ionc <- species[ionc, on="speciesCode"]
 
 # speciesGroup
-speciesGroup <- getCodeList('SpeciesGroup', key=IOTC_KEY)
+speciesGroup <- getCodeList("SpeciesGroup", key=IOTC_KEY)
 ionc <- speciesGroup[ionc, on="speciesGroupCode"]
 
 # fisheryType
-fisheryType <- getCodeList('FisheryType', key=IOTC_KEY)
+fisheryType <- getCodeList("FisheryType", key=IOTC_KEY)
 ionc <- fisheryType[ionc, on="fisheryTypeCode"]
 
 # fisheryGroup
-fisheryGroup <- getCodeList('FisheryGroup', key=IOTC_KEY)
+fisheryGroup <- getCodeList("FisheryGroup", key=IOTC_KEY)
 ionc <- fisheryGroup[ionc, on="fisheryGroupCode"]
 
 # fishery
-fishery <- getCodeList('Fishery', key=IOTC_KEY)
+fishery <- getCodeList("Fishery", key=IOTC_KEY)
 ionc <- fishery[ionc, on="fisheryCode"]
 
 # quality
-quality <- getCodeList('QualityCode', key=IOTC_KEY, name="quality")
+quality <- getCodeList("QualityCode", key=IOTC_KEY, name="quality")
 ionc <- quality[ionc, on="qualityCode"]
 
 # cpc
@@ -62,17 +64,18 @@ setcolorder(ionc, c("year", "speciesGroupCode", "speciesGroup",
 setnames(ionc, c("year", "spgcde", "spg",
   "sppcde", "spp", "areacde", "area", "fleetcde", "fleet", "cpc", "cpccde",
   "fishgrcde", "fishgr", "fishtycde", "fishty",
-  "fishcde", "fishery", "qualcde", "quality", "catches"))
+  "fishcde", "fishery", "qualcde", "quality", "catch"))
 
 # SETKEY
 setkey(ionc, spgcde, sppcde, areacde, fleetcde, cpccde, fishgrcde,
   fishtycde, fishcde, qualcde)
 
 # SAVE iotc
-save(ionc, file="../iotc.RData", compress="xz") 
+save(ionc, file="../data/iotc.RData", compress="xz") 
 
 # }}}
 
+# TODO convert to web services
 # CE {{{
 
 # CE LL
