@@ -8,12 +8,12 @@
 
 library(tunadata)
 
+IOTC_KEY <- Sys.getenv("IOTC_KEY")
+
 # NC {{{
 
-IOTC_KEY=Sys.getenv("IOTC_KEY")
-
 # LOAD ionc
-ionc <- getNC(IOTC_KEY)
+ionc <- getNC(key=IOTC_KEY)
 
 # fleet
 # GET values in field
@@ -68,14 +68,14 @@ setnames(ionc, c("year", "spgcde", "spg",
 
 # SETKEY
 setkey(ionc, spgcde, sppcde, areacde, fleetcde, cpccde, fishgrcde,
-  fishtycde, fishcde, qualcde)
+  fishtycde, fishcde, qualcde, year)
 
 # SAVE iotc
 save(ionc, file="../data/iotc.RData", compress="xz") 
 
 # }}}
 
-# TODO convert to web services
+# TODO CONVERT to web services
 # CE {{{
 
 # CE LL

@@ -2,17 +2,18 @@
 # tunadata/R/iotc.R
 
 # Copyright European Union, 2016
-# Author: Iago Mosqueira (EC JRC) <iago.mosqueira@jrc.ec.europa.eu>
+# Author: Iago Mosqueira (EC JRC) <iago.mosqueira@ec.europa.eu>
 #
 # Distributed under the terms of the European Union Public Licence (EUPL) V.1.1.
 
 # getNC {{{
 
-getNC <- function(key, toYear=as.character(as.numeric(format(Sys.time(), "%Y")) - 1)) {
+getNC <- function(key=Sys.getenv("IOTC_KEY"),
+  toYear=as.character(as.numeric(format(Sys.time(), "%Y")) - 1)) {
 
   url <- "http://statistics.iotc.org/rest/services/data/nc/summary/results"
 
-  jfilter = paste0(
+  jfilter = paste(
     '{',
       '"includePreliminary": false, ',
       '"includeConfidential": false, ',
@@ -39,7 +40,8 @@ getNC <- function(key, toYear=as.character(as.numeric(format(Sys.time(), "%Y")) 
   if(http_error(req))
     stop(paste(http_status(req)$message, url, sep = " - "))
 
-  nc <- data.table(fromJSON(content(req, "text", encoding="UTF-8")))
+  nc <- data.table(fromJSON(content(req, "text", encoding="UTF-8")),
+    stringsAsFactors=TRUE)
   setkey(nc, fleetCode)
 
   return(nc)
@@ -51,8 +53,7 @@ getCodeList <- function(list, key,
   name=paste0(tolower(substring(list, 1, 1)), substring(list, 2))) {
   
   # CONSTRUCT url
-  url <- paste0("http://statistics.iotc.org/rest/services/reference/codelists/retrieve/",
-    list)
+  url <- paste0("http://statistics.iotc.org/rest/services/reference/codelists/retrieve/", list)
   
   # GET codelist
   req <- httr::GET(url, add_headers("X-IOTC-STATS-API-key" = key))
